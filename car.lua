@@ -1,33 +1,39 @@
-local Vehicle = require(script.Parent)
-
-local Car = setmetatable({}, { __index = Vehicle })
+local Car = {}
 Car.__index = Car
 
-function Car.new(
-	make,
-	model,
-	maxSpeed,
-	colour,
-	tyrePressure,
-	numberOfDoors,
-	engineType)
-	
-	local self = Vehicle.new(make, model, maxSpeed, colour, 4, engineType)
-	
-	self.TyrePressure = tyrePressure
+-- Constructor to create a new Car object
+function Car.new(make, model, numberOfDoors, colour, engineType)
+	local self = setmetatable({}, Car)
+
+	self.Make = make
+	self.Model = model
 	self.NumberOfDoors = numberOfDoors or 4
-	
-	setmetatable(self, Car)
-	
+	self.Colour = colour or "Unknown"
+	self.EngineType = engineType or "Unknown"
+
 	return self
 end
 
--- Car-specific methods or overrides can be added here
-function Car:CheckTyrePressure()
-	if self.TyrePressure < 30 then
-		print(self.Make .. " tyre pressure is low: " .. self.TyrePressure .. " PSI.")
+-- Methods
+
+-- Drive method to simulate driving
+function Car:Drive()
+	print("The "..self.Make.." is now driving!")
+end
+
+-- Brake method to simulate braking
+function Car:Brake()
+	print("The "..self.Make.." is now braking!")
+end
+
+-- Turn method to simulate turning
+function Car:Turn(direction)
+	if direction == "left" then
+		print("The car is turning left.")
+	elseif direction == "right" then
+		print("The car is turning right.")
 	else
-		print(self.Make .. " tyre pressure is normal: " .. self.TyrePressure .. " PSI.")
+		print("The car is moving straight.")
 	end
 end
 
