@@ -11,4 +11,8 @@ function Ferrari.new(numberOfDoors, colour, engineType)
 	return self
 end
 
+function Ferrari:ActivateLaunchControl()
+	print("Launch Control activated! Hold on tight, the Ferrari " .. self.Model .. " is about to explode off the line!")
+end
+
 return Ferrari
