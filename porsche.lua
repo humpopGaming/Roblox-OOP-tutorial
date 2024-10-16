@@ -9,4 +9,8 @@ function Porsche.new(numberOfDoors, colour, engineType)
 	return self
 end
 
+function Porsche:ActivateSportChrono()
+	print("Sport Chrono activated! The Porsche " .. self.Model .. " is now in sport mode with optimized performance!")
+end
+
 return Porsche
